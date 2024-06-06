@@ -41,3 +41,4 @@ Suggests:
     tictoc,
     knitr
 VignetteBuilder: knitr
+URL: https://spatlyu.github.io/geosom/, https://github.com/SpatLyu/geosom 
