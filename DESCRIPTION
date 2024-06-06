@@ -1,11 +1,43 @@
 Package: geosom
-Title: What the Package Does (One Line, Title Case)
+Title: Spatially-Aware Self-Organizing Maps
 Version: 0.0.0.9000
 Authors@R: 
     person("Wenbo", "Lv", , "lyu.geosocial@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0002-6003-3800"))
-Description: What the package does (one paragraph).
+Description: Spatially-Aware Self-Organizing Maps(GeoSOM) Model in R.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports:
+  stats,
+  graphics,
+  parallel,
+  aweSOM,
+  cluster,
+  dplyr,
+  kohonen,
+  magrittr,
+  purrr,
+  tibble,
+  tidyr
+Suggests: 
+    sf,
+    terra,
+    ggplot2,
+    ggspatial,
+    tidyverse,
+    tidyterra,
+    tmap,
+    rmarkdown,
+    cowplot,
+    mapview,
+    readxl,
+    writexl,
+    htmlwidgets,
+    tictoc,
+    knitr
+VignetteBuilder: knitr
