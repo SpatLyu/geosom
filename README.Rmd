@@ -1,0 +1,81 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "##",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+<!-- badges: start -->
+
+![CRAN](https://www.r-pkg.org/badges/version/geosom)
+
+<!-- badges: end -->
+
+The goal of **geosom** is to achieve `Spatially-Aware Self-Organizing Maps(GeoSOM) Model` in R.
+
+## Installation
+
+You can install the development version of `geosom` from `github`:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("SpatLyu/geosom",build_vignettes = T,dep = T)
+```
+
+
+## Example
+
+```{r example_geosom}
+library(geosom)
+data(pmc)
+
+set.seed(20220724)
+tictoc::tic()
+geosom_bestparam(data = pmc, 
+                 coords = c("centroidx","centroidy"),
+                 wt = c(seq(0.1,1,by = 0.1),2:5),
+                 xdim = 4:10, ydim = 4:10,cores = 6) -> g_bestparam
+tictoc::toc()
+```
+
+```{r Build-and-assess-geosom-model}
+g = geosom(data = pmc, coords = c("centroidx","centroidy"), wt = .9,
+           grid = geosomgrid(4,4,topo = "rectangular",
+                             neighbourhood.fct = "gaussian"))
+```
+
+```{r}
+g_superclass = geosom_superclass(g,6,method = 'pam')
+g_superclass
+```
+
+```{r}
+g_label = geosom_clusterlabel(g,g_superclass)
+g_label
+```
+
+```{r fig.width=7.5, fig.height=5}
+library(sf)
+library(dplyr)
+library(ggplot2)
+
+pmc %>% 
+  mutate(zone = as.factor(g_label)) %>% 
+  st_as_sf(coords = c("centroidx","centroidy")) %>% 
+  ggplot() +
+  geom_sf(aes(col = zone),size = 1.25,shape = 17) +
+  scale_color_discrete(type = 'viridis') +
+  theme_bw() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank())
+```
