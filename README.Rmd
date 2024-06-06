@@ -16,9 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 <!-- badges: start -->
-
 ![CRAN](https://www.r-pkg.org/badges/version/geosom)
-
 <!-- badges: end -->
 
 The goal of **geosom** is to achieve `Spatially-Aware Self-Organizing Maps(GeoSOM) Model` in R.

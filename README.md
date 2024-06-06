@@ -2,11 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-<figure>
-<img src="https://www.r-pkg.org/badges/version/geosom" alt="CRAN" />
-<figcaption aria-hidden="true">CRAN</figcaption>
-</figure>
-
+![CRAN](https://www.r-pkg.org/badges/version/geosom)
 <!-- badges: end -->
 
 The goal of **geosom** is to achieve
@@ -34,7 +30,7 @@ geosom_bestparam(data = pmc,
                  wt = c(seq(0.1,1,by = 0.1),2:5),
                  xdim = 4:10, ydim = 4:10,cores = 6) -> g_bestparam
 tictoc::toc()
-## 55.61 sec elapsed
+## 53.59 sec elapsed
 ```
 
 ``` r
